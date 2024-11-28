@@ -72,6 +72,7 @@ class DocField(Document):
 			"Text",
 			"Text Editor",
 			"Time",
+			"Radio",
 		]
 		hidden: DF.Check
 		hide_border: DF.Check
@@ -144,10 +145,22 @@ class DocField(Document):
 				"options",
 			)
 
-	def get_select_options(self):
-		if self.fieldtype == "Select":
+	def parse_options(self):
+		"""Parse and return options for Select and Radio fields."""
+		if self.fieldtype in {"Select", "Radio"}:
 			options = self.options or ""
-			return [d for d in options.split("\n") if d]
+			return [d.strip() for d in options.split("\n") if d]
+		return []
+
+	def get_select_options(self):
+		"""Get parsed options for Select fields."""
+		if self.fieldtype == "Select":
+			return self.parse_options()
+
+	def get_radio_options(self):
+		"""Get parsed options for Radio fields."""
+		if self.fieldtype == "Radio":
+			return self.parse_options()
 
 	def __repr__(self):
 		unsaved = "unsaved" if not self.name else ""

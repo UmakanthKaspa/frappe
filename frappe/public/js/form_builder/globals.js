@@ -13,6 +13,7 @@ import TableControl from "./components/controls/TableControl.vue";
 import TextControl from "./components/controls/TextControl.vue";
 import TextEditorControl from "./components/controls/TextEditorControl.vue";
 import FetchFromControl from "./components/controls/FetchFromControl.vue";
+import RadioControl from "./components/controls/RadioControl.vue";
 
 export function registerGlobalComponents(app) {
 	app.component("AttachControl", AttachControl)
@@ -54,5 +55,6 @@ export function registerGlobalComponents(app) {
 		.component("TextControl", TextControl)
 		.component("TextEditorControl", TextEditorControl)
 		.component("TimeControl", DataControl)
-		.component("FetchFromControl", FetchFromControl);
+		.component("FetchFromControl", FetchFromControl)
+		.component("RadioControl", RadioControl);
 }

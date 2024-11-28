@@ -52,6 +52,7 @@ export const useStore = defineStore("form-builder-store", () => {
 
 	function get_df(fieldtype, fieldname = "", label = "") {
 		let docfield = is_customize_form.value ? "Customize Form Field" : "DocField";
+		console.log(docfield)
 		let df = frappe.model.get_new_doc(docfield);
 		df.name = frappe.utils.get_random(8);
 		df.fieldtype = fieldtype;
