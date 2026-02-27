@@ -177,7 +177,7 @@ frappe.report_utils = {
 				fieldname: "file_format",
 				fieldtype: "Select",
 				options: ["Excel", "CSV"],
-				default: "Excel",
+				default: localStorage.getItem("export_file_format") || "Excel",
 				reqd: 1,
 			},
 			{
@@ -245,7 +245,10 @@ frappe.report_utils = {
 			title: __("Export Report: {0}", [report_name], "Export report"),
 			fields: fields,
 			primary_action_label: __("Download", null, "Export report"),
-			primary_action: callback,
+			primary_action: (values) => {
+				localStorage.setItem("export_file_format", values.file_format);
+				callback(values);
+			},
 		});
 
 		function update_csv_preview(dialog) {

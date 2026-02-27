@@ -18,7 +18,7 @@ frappe.data_import.DataExporter = class DataExporter {
 					fieldname: "file_type",
 					label: __("File Type"),
 					options: ["Excel", "CSV"],
-					default: filetype,
+					default: localStorage.getItem("export_file_format") || filetype,
 				},
 				{
 					fieldtype: "Select",
@@ -110,6 +110,7 @@ frappe.data_import.DataExporter = class DataExporter {
 			.map((df) => df.fieldname);
 
 		let values = this.dialog.get_values();
+		localStorage.setItem("export_file_format", values.file_type);
 
 		let doctype_field_map = Object.assign({}, values);
 		for (let key in doctype_field_map) {
