@@ -22,6 +22,7 @@
   "in_preview",
   "bold",
   "no_copy",
+  "set_only_once",
   "allow_in_quick_entry",
   "translatable",
   "mask",
@@ -391,6 +392,7 @@
   },
   {
    "default": "0",
+   "depends_on": "eval:!in_list(['Tab Break', 'Table'], doc.fieldtype)",
    "fieldname": "allow_in_quick_entry",
    "fieldtype": "Check",
    "label": "Allow in Quick Entry"
@@ -509,6 +511,12 @@
    "fieldname": "mask",
    "fieldtype": "Check",
    "label": "Mask"
+  },
+  {
+   "default": "0",
+   "fieldname": "set_only_once",
+   "fieldtype": "Check",
+   "label": "Set only once"
   }
  ],
  "grid_page_length": 50,
@@ -516,7 +524,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-12-23 14:17:10.458916",
+ "modified": "2026-03-16 20:20:37.791026",
  "modified_by": "Administrator",
  "module": "Custom",
  "name": "Customize Form Field",
